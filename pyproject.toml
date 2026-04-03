@@ -1,0 +1,16 @@
+[project]
+name = "national-parks-agglomerate"
+version = "0.1.0"
+description = "NPS data acquisition and analysis package"
+authors = [
+  { name = "Ryan Morrow" }
+]
+dependencies = [
+  "requests",
+  "pandas",
+  "python-dotenv"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
