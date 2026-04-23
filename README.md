@@ -1,6 +1,8 @@
 # National Parks: An Agglomerate
 
-This project uses the National Park Service API to build a curated dataset of U.S. National Park Service sites. The goal was to create a park-level dataset that combines information from multiple API endpoints into one clean table for analysis.
+This project uses the National Park Service (NPS) API to build a curated dataset of U.S. National Park Service sites. The goal is to combine multiple API endpoints into a single, clean dataset that supports analysis and visualization.
+
+---
 
 ## Live App
 
@@ -11,73 +13,118 @@ https://national-parks-agglomerategit-fx4mzpepe8eaqgridzjnzr.streamlit.app/
 
 ## Project Goal
 
-I wanted to build a dataset that could help compare park units across the National Park Service system using location, park descriptions, activities, alerts, and campground information.
+This project investigates how **park amenities** (activities and campgrounds) relate to **operational complexity** (alerts).
 
-More specifically, this project explores how **park amenities (activities, campgrounds)** relate to **operational complexity (alerts)** across park units.
+Rather than using a pre-existing dataset, this project builds one from scratch by:
+- Collecting data from the NPS API
+- Cleaning and transforming raw data
+- Engineering useful features
+- Merging multiple data sources into one dataset
 
 ---
 
 ## Data Sources
 
 This project uses the official National Park Service API:
-
 - Parks endpoint
 - Alerts endpoint
 - Campgrounds endpoint
 
-The data was collected through the public API using Python. To re-run the data collection scripts, you will need a free API key from the [National Park Service Developer Portal](https://www.nps.gov/subjects/developer/get-started.htm). Store it in a `.env` file at the root of the project:
+To re-run the data collection process, you will need a free API key from:
+https://www.nps.gov/subjects/developer/get-started.htm
+
+Create a `.env` file in the root directory:
 ```
 NPS_API_KEY=your_key_here
 ```
+
+---
+
+## Installation
+
+Clone the repository and install the package:
+
+```bash
+git clone https://github.com/rylion9-lgtm/national-parks-agglomerate
+cd national-parks-agglomerate
+python -m pip install -e .
+```
+
+To run the Streamlit app, install Streamlit:
+
+```bash
+python -m pip install streamlit
+```
+
+---
+
+## Running the App
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## Example Usage (Package)
+
+```python
+import pandas as pd
+from national_parks import summarize_parks
+
+df = pd.read_csv("data/processed/parks_final.csv")
+summary = summarize_parks(df)
+
+print(summary)
+```
+
 ---
 
 ## Final Dataset
 
-The final dataset is saved as:
+The final dataset is located at:
 
-`data/processed/parks_final.csv`
+```
+data/processed/parks_final.csv
+```
 
-It contains **474 rows** and **9 columns**.
+It contains:
+- 474 rows
+- 9 columns
 
 ### Variables
 
-- `fullName`: full name of the park unit
-- `parkCode`: unique park code used by the NPS API
-- `states`: state abbreviation(s) for the park unit
-- `latitude`: latitude of the park unit
-- `longitude`: longitude of the park unit
-- `description_length`: number of characters in the park description
-- `num_activities`: approximate count of activities listed for the park
-- `num_alerts`: number of alerts associated with the park from the pulled alerts data
-- `num_campgrounds`: number of campgrounds associated with the park from the pulled campgrounds data
+- `fullName`: Full name of the park unit
+- `parkCode`: Unique park identifier
+- `states`: State abbreviation(s)
+- `latitude`: Latitude
+- `longitude`: Longitude
+- `description_length`: Length of park description
+- `num_activities`: Count of activities
+- `num_alerts`: Number of alerts
+- `num_campgrounds`: Number of campgrounds
 
 ---
 
 ## Key Insight
 
-Most parks have relatively few alerts regardless of activity level, suggesting only a weak relationship between amenities and alerts. However, larger parks with more activities tend to show slightly higher alert counts, indicating increased operational complexity.
+Most parks have relatively few alerts regardless of activity level, suggesting only a weak relationship between amenities and alerts. However, parks with more activities tend to show slightly higher alert counts, indicating increased operational complexity.
 
 ---
 
 ## Project Structure
-```text
+
+```
 national-parks-agglomerate/
 ├── README.md
 ├── requirements.txt
 ├── pyproject.toml
 ├── .gitignore
 ├── app.py
-├── test_package.py
 │
 ├── data/
 │   ├── raw/
-│   │   ├── parks_raw.csv
-│   │   ├── alerts_raw.csv
-│   │   └── campgrounds_raw.csv
 │   └── processed/
-│       ├── parks_clean.csv
-│       ├── parks_with_alerts.csv
-│       └── parks_final.csv
 │
 ├── src/
 │   ├── get_parks.py
@@ -94,57 +141,25 @@ national-parks-agglomerate/
     └── analyze.py
 ```
 
-- `src/` contains scripts used to build the dataset
-- `national_parks/` contains the installable Python package
-- `app.py` is the Streamlit app for interactive exploration
-
----
-
-## Prerequisites
-
-- Python 3.11+
-- A [National Park Service API key](https://www.nps.gov/subjects/developer/get-started.htm) (only needed to re-run data collection)
-
----
-
-## How to Run
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/rylion9-lgtm/national-parks-agglomerate
-cd national-parks-agglomerate
-```
-
-2. **Install dependencies**
-```bash
-python -m pip install -r requirements.txt
-```
-
-3. **Run the Streamlit app**
-```bash
-streamlit run app.py
-```
-
 ---
 
 ## Notes and Limitations
 
-- The dataset represents a snapshot in time and does not automatically update
-- Alerts and campgrounds were pulled with a limit of 500 records
+- Data represents a snapshot in time (not live-updating)
+- Alerts and campgrounds were limited to 500 records
 - `num_activities` is an engineered approximation
-- Park units vary widely in type and scale
+- Park units vary widely in size and type
 
 ---
 
 ## Why This Project Matters
 
-This project demonstrates how to:
+This project demonstrates:
+- API data collection
+- Data cleaning and transformation
+- Feature engineering
+- Multi-source data integration
+- Building an installable Python package
+- Deploying an interactive Streamlit app
 
-- Collect data from an API
-- Clean and transform raw data
-- Engineer meaningful features
-- Combine multiple data sources
-- Build an installable Python package
-- Deploy an interactive application
-
-Rather than using a pre-made dataset, this project builds one from scratch — reflecting a real-world data science workflow.
+It reflects a real-world data science workflow from raw data to deployed application.
