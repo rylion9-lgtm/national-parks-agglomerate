@@ -4,105 +4,112 @@
     "href": "technical-report.html",
     "title": "Technical Report",
     "section": "",
-    "text": "The goal of this project is to better understand how different National Park Service sites compare in terms of amenities and operational complexity.\nRather than relying on an existing dataset, this project builds a custom dataset using the National Park Service API. This allows for greater control over the features included and ensures the dataset reflects the specific questions being explored.\n\n\n\n\nData was collected from the National Park Service API using three endpoints:\n\nParks\nAlerts\nCampgrounds\n\nEach endpoint provides different information about park units. These datasets were pulled using Python and stored as raw CSV files.\n\n\n\n\nThe raw datasets were cleaned and transformed to create a single, unified dataset.\nKey steps included:\n\nSelecting relevant variables\nHandling missing values\nMerging datasets using park codes\nCreating new features:\n\ndescription_length\nnum_activities\nnum_alerts\nnum_campgrounds\n\n\nThe final dataset contains 474 park units and 9 variables.\n\n\n\n\nThe main focus of the analysis is the relationship between:\n\nAmenities (activities and campgrounds)\nOperational complexity (alerts)\n\nA scatterplot of activities versus alerts shows that most parks have relatively few alerts regardless of activity level. However, parks with more activities tend to have slightly higher alert counts.\nThis suggests a weak positive relationship between amenities and operational complexity.\n\n\n\n\n\nMost parks have low alert counts\nThere is only a weak relationship between activities and alerts\nLarger or more complex parks tend to have more alerts\n\n\n\n\n\n\nThe dataset is a snapshot in time and does not update automatically\nAlerts and campgrounds were limited to 500 records\nPark types vary widely, which may affect comparisons\n\n\n\n\n\nThe full workflow can be reproduced using the scripts in the src/ directory:\n\nget_parks.py\nget_alerts.py\nget_campgrounds.py\nclean_parks.py\nmerge_alerts.py\nmerge_campgrounds.py\n\nThe final dataset is stored at:\ndata/processed/parks_final.csv\n\n\n\n\nThis project demonstrates a complete data science workflow, from data collection to analysis and deployment. It highlights how public APIs can be used to build meaningful datasets and extract insights from real-world data."
+    "text": "This project builds a custom dataset using the National Park Service (NPS) API by combining parks, alerts, and campground data into a unified dataset. The goal is to explore how park amenities relate to operational complexity across National Park Service sites.\nThe final dataset contains 474 park units and includes engineered features such as number of activities, alerts, and campgrounds. Analysis suggests a weak positive relationship between amenities and operational complexity."
+  },
+  {
+    "objectID": "technical-report.html#executive-summary",
+    "href": "technical-report.html#executive-summary",
+    "title": "Technical Report",
+    "section": "",
+    "text": "This project builds a custom dataset using the National Park Service (NPS) API by combining parks, alerts, and campground data into a unified dataset. The goal is to explore how park amenities relate to operational complexity across National Park Service sites.\nThe final dataset contains 474 park units and includes engineered features such as number of activities, alerts, and campgrounds. Analysis suggests a weak positive relationship between amenities and operational complexity."
   },
   {
     "objectID": "technical-report.html#motivation",
     "href": "technical-report.html#motivation",
     "title": "Technical Report",
-    "section": "",
-    "text": "The goal of this project is to better understand how different National Park Service sites compare in terms of amenities and operational complexity.\nRather than relying on an existing dataset, this project builds a custom dataset using the National Park Service API. This allows for greater control over the features included and ensures the dataset reflects the specific questions being explored."
+    "section": "Motivation",
+    "text": "Motivation\nThe National Park Service manages a wide range of park units that vary significantly in size, infrastructure, and usage. Understanding how park features relate to operational demands can provide insight into how resources are distributed and managed.\nRather than using a pre-existing dataset, this project builds a dataset from scratch to allow full control over feature selection and data structure."
   },
   {
     "objectID": "technical-report.html#data-collection",
     "href": "technical-report.html#data-collection",
     "title": "Technical Report",
-    "section": "",
-    "text": "Data was collected from the National Park Service API using three endpoints:\n\nParks\nAlerts\nCampgrounds\n\nEach endpoint provides different information about park units. These datasets were pulled using Python and stored as raw CSV files."
+    "section": "Data Collection",
+    "text": "Data Collection\nData was collected from the National Park Service API using three endpoints:\n\nParks\nAlerts\nCampgrounds\n\nEach endpoint provides different information about park units. Data was retrieved using Python and stored as raw CSV files."
   },
   {
-    "objectID": "technical-report.html#data-processing",
-    "href": "technical-report.html#data-processing",
+    "objectID": "technical-report.html#methodology",
+    "href": "technical-report.html#methodology",
     "title": "Technical Report",
-    "section": "",
-    "text": "The raw datasets were cleaned and transformed to create a single, unified dataset.\nKey steps included:\n\nSelecting relevant variables\nHandling missing values\nMerging datasets using park codes\nCreating new features:\n\ndescription_length\nnum_activities\nnum_alerts\nnum_campgrounds\n\n\nThe final dataset contains 474 park units and 9 variables."
+    "section": "Methodology",
+    "text": "Methodology\n\nData Acquisition\nAPI requests were made using the requests library. Each endpoint returned JSON data, which was converted into pandas DataFrames.\nThe parks dataset served as the base dataset, while alerts and campgrounds were merged using park codes.\n\n\nData Cleaning\nKey cleaning steps included:\n\nRemoving missing values\nStandardizing column names\nConverting data types\nSelecting relevant variables\n\n\n\nFeature Engineering\nNew variables were created to support analysis:\n\ndescription_length: length of park description\nnum_activities: number of listed activities\nnum_alerts: number of alerts per park\nnum_campgrounds: number of campgrounds per park"
   },
   {
     "objectID": "technical-report.html#analysis",
     "href": "technical-report.html#analysis",
     "title": "Technical Report",
-    "section": "",
-    "text": "The main focus of the analysis is the relationship between:\n\nAmenities (activities and campgrounds)\nOperational complexity (alerts)\n\nA scatterplot of activities versus alerts shows that most parks have relatively few alerts regardless of activity level. However, parks with more activities tend to have slightly higher alert counts.\nThis suggests a weak positive relationship between amenities and operational complexity."
+    "section": "Analysis",
+    "text": "Analysis\nThe primary question explored is the relationship between:\n\nAmenities (activities and campgrounds)\nOperational complexity (alerts)\n\nA scatterplot of activities versus alerts shows that most parks have low alert counts regardless of activity level. However, parks with more activities tend to have slightly higher alert counts.\nA simple linear trend line suggests a weak positive relationship."
   },
   {
     "objectID": "technical-report.html#key-findings",
     "href": "technical-report.html#key-findings",
     "title": "Technical Report",
-    "section": "",
-    "text": "Most parks have low alert counts\nThere is only a weak relationship between activities and alerts\nLarger or more complex parks tend to have more alerts"
+    "section": "Key Findings",
+    "text": "Key Findings\n\nMost parks have low numbers of alerts\nThere is only a weak relationship between amenities and alerts\nParks with more infrastructure tend to show slightly higher operational complexity"
   },
   {
     "objectID": "technical-report.html#limitations",
     "href": "technical-report.html#limitations",
     "title": "Technical Report",
-    "section": "",
-    "text": "The dataset is a snapshot in time and does not update automatically\nAlerts and campgrounds were limited to 500 records\nPark types vary widely, which may affect comparisons"
+    "section": "Limitations",
+    "text": "Limitations\n\nThe dataset is a snapshot in time and does not update automatically\nAlerts and campgrounds were limited to 500 records\nPark units vary widely in type and scale, which affects comparisons"
   },
   {
     "objectID": "technical-report.html#reproducibility",
     "href": "technical-report.html#reproducibility",
     "title": "Technical Report",
-    "section": "",
-    "text": "The full workflow can be reproduced using the scripts in the src/ directory:\n\nget_parks.py\nget_alerts.py\nget_campgrounds.py\nclean_parks.py\nmerge_alerts.py\nmerge_campgrounds.py\n\nThe final dataset is stored at:\ndata/processed/parks_final.csv"
+    "section": "Reproducibility",
+    "text": "Reproducibility\nThe full workflow can be reproduced using scripts in the src/ directory:\n\nget_parks.py\nget_alerts.py\nget_campgrounds.py\nclean_parks.py\nmerge_alerts.py\nmerge_campgrounds.py\n\nThe final dataset is stored at:\ndata/processed/parks_final.csv"
   },
   {
     "objectID": "technical-report.html#conclusion",
     "href": "technical-report.html#conclusion",
     "title": "Technical Report",
-    "section": "",
-    "text": "This project demonstrates a complete data science workflow, from data collection to analysis and deployment. It highlights how public APIs can be used to build meaningful datasets and extract insights from real-world data."
+    "section": "Conclusion",
+    "text": "Conclusion\nThis project demonstrates a full data science workflow, from data collection to deployment. It highlights how API data can be transformed into a structured dataset and used to explore meaningful relationships between real-world variables."
   },
   {
     "objectID": "documentation.html",
     "href": "documentation.html",
-    "title": "Documentation",
+    "title": "Package Documentation",
     "section": "",
-    "text": "This page describes the main functions available in the national_parks package.\n\n\n\n\n\nFetches park data from the National Park Service API and returns it as a pandas DataFrame.\n\n\n\n\nNone\n\n\n\n\n\npandas.DataFrame: Raw parks data from the API\n\n\n\n\nfrom national_parks import get_parks_data\n\ndf = get_parks_data()\nprint(df.head())\n\n\n\n\n\n\n\nCleans the raw parks dataset and creates new features such as description length and number of activities.\n\n\n\n\ndf (pandas.DataFrame): Raw parks data\n\n\n\n\n\npandas.DataFrame: Cleaned parks dataset\n\n\n\n\nfrom national_parks import get_parks_data, clean_parks\n\ndf = get_parks_data()\nclean_df = clean_parks(df)\n\n\n\n\n\n\n\nGenerates summary statistics for a parks dataset.\n\n\n\n\ndf (pandas.DataFrame): Processed parks dataset\n\n\n\n\n\nSummary output (DataFrame or dictionary depending on implementation)\n\n\n\n\nfrom national_parks import summarize_parks\nimport pandas as pd\n\ndf = pd.read_csv(\"data/processed/parks_final.csv\")\nsummary = summarize_parks(df)\n\nprint(summary)\n\n\n\n\n\n\n\nReturns the parks with the highest number of alerts.\n\n\n\n\ndf (pandas.DataFrame): Processed parks dataset\n\n\n\n\n\npandas.DataFrame: Top parks sorted by alert count\n\n\n\n\nfrom national_parks import top_parks_by_alerts\nimport pandas as pd\n\ndf = pd.read_csv(\"data/processed/parks_final.csv\")\ntop_parks = top_parks_by_alerts(df)\n\nprint(top_parks)\n\n\n\n\n\n\nData collection functions require an NPS API key stored in a .env file.\nThe dataset used in examples is located in data/processed/parks_final.csv."
+    "text": "This page describes the main functions available in the national_parks package."
   },
   {
     "objectID": "documentation.html#get_parks_data",
     "href": "documentation.html#get_parks_data",
-    "title": "Documentation",
-    "section": "",
-    "text": "Fetches park data from the National Park Service API and returns it as a pandas DataFrame.\n\n\n\n\nNone\n\n\n\n\n\npandas.DataFrame: Raw parks data from the API\n\n\n\n\nfrom national_parks import get_parks_data\n\ndf = get_parks_data()\nprint(df.head())"
+    "title": "Package Documentation",
+    "section": "get_parks_data()",
+    "text": "get_parks_data()\n\nDescription\nFetches park data from the National Park Service API and returns it as a pandas DataFrame.\n\n\nArguments\n\nNone\n\n\n\nReturns\n\npandas.DataFrame: Raw parks data from the API\n\n\n\nExample\nfrom national_parks import get_parks_data\n\ndf = get_parks_data()\nprint(df.head())"
   },
   {
     "objectID": "documentation.html#clean_parksdf",
     "href": "documentation.html#clean_parksdf",
-    "title": "Documentation",
-    "section": "",
-    "text": "Cleans the raw parks dataset and creates new features such as description length and number of activities.\n\n\n\n\ndf (pandas.DataFrame): Raw parks data\n\n\n\n\n\npandas.DataFrame: Cleaned parks dataset\n\n\n\n\nfrom national_parks import get_parks_data, clean_parks\n\ndf = get_parks_data()\nclean_df = clean_parks(df)"
+    "title": "Package Documentation",
+    "section": "clean_parks(df)",
+    "text": "clean_parks(df)\n\nDescription\nCleans the raw parks dataset and creates new features such as description length and number of activities.\n\n\nArguments\n\ndf (pandas.DataFrame): Raw parks data\n\n\n\nReturns\n\npandas.DataFrame: Cleaned parks dataset\n\n\n\nExample\nfrom national_parks import get_parks_data, clean_parks\n\ndf = get_parks_data()\nclean_df = clean_parks(df)"
   },
   {
     "objectID": "documentation.html#summarize_parksdf",
     "href": "documentation.html#summarize_parksdf",
-    "title": "Documentation",
-    "section": "",
-    "text": "Generates summary statistics for a parks dataset.\n\n\n\n\ndf (pandas.DataFrame): Processed parks dataset\n\n\n\n\n\nSummary output (DataFrame or dictionary depending on implementation)\n\n\n\n\nfrom national_parks import summarize_parks\nimport pandas as pd\n\ndf = pd.read_csv(\"data/processed/parks_final.csv\")\nsummary = summarize_parks(df)\n\nprint(summary)"
+    "title": "Package Documentation",
+    "section": "summarize_parks(df)",
+    "text": "summarize_parks(df)\n\nDescription\nGenerates summary statistics for a parks dataset.\n\n\nArguments\n\ndf (pandas.DataFrame): Processed parks dataset\n\n\n\nReturns\n\nSummary output (DataFrame or dictionary depending on implementation)\n\n\n\nExample\nfrom national_parks import summarize_parks\nimport pandas as pd\n\ndf = pd.read_csv(\"data/processed/parks_final.csv\")\nsummary = summarize_parks(df)\n\nprint(summary)"
   },
   {
     "objectID": "documentation.html#top_parks_by_alertsdf",
     "href": "documentation.html#top_parks_by_alertsdf",
-    "title": "Documentation",
-    "section": "",
-    "text": "Returns the parks with the highest number of alerts.\n\n\n\n\ndf (pandas.DataFrame): Processed parks dataset\n\n\n\n\n\npandas.DataFrame: Top parks sorted by alert count\n\n\n\n\nfrom national_parks import top_parks_by_alerts\nimport pandas as pd\n\ndf = pd.read_csv(\"data/processed/parks_final.csv\")\ntop_parks = top_parks_by_alerts(df)\n\nprint(top_parks)"
+    "title": "Package Documentation",
+    "section": "top_parks_by_alerts(df)",
+    "text": "top_parks_by_alerts(df)\n\nDescription\nReturns the parks with the highest number of alerts.\n\n\nArguments\n\ndf (pandas.DataFrame): Processed parks dataset\n\n\n\nReturns\n\npandas.DataFrame: Top parks sorted by alert count\n\n\n\nExample\nfrom national_parks import top_parks_by_alerts\nimport pandas as pd\n\ndf = pd.read_csv(\"data/processed/parks_final.csv\")\ntop_parks = top_parks_by_alerts(df)\n\nprint(top_parks)"
   },
   {
     "objectID": "documentation.html#notes",
     "href": "documentation.html#notes",
-    "title": "Documentation",
-    "section": "",
-    "text": "Data collection functions require an NPS API key stored in a .env file.\nThe dataset used in examples is located in data/processed/parks_final.csv."
+    "title": "Package Documentation",
+    "section": "Notes",
+    "text": "Notes\n\nData collection functions require an NPS API key stored in a .env file.\nThe dataset used in examples is located in data/processed/parks_final.csv."
   },
   {
     "objectID": "index.html",
@@ -142,64 +149,64 @@
   {
     "objectID": "tutorial.html",
     "href": "tutorial.html",
-    "title": "Tutorial",
+    "title": "Tutorial: Using the National Parks Package",
     "section": "",
-    "text": "This tutorial walks through how to install and use the national_parks package.\n\n\n\nInstall directly from PyPI:\npip install national-parks-agglomerate\n\n\n\n\nOpen Python and import the functions:\nfrom national_parks import summarize_parks\nimport pandas as pd\n\n\n\n\nUse the included processed dataset:\ndf = pd.read_csv(\"data/processed/parks_final.csv\")\n\n\n\n\nsummary = summarize_parks(df)\nprint(summary)\n\n\n\n\nfrom national_parks import top_parks_by_alerts\n\ntop_parks = top_parks_by_alerts(df)\nprint(top_parks)\n\n\n\n\nIf you want to collect fresh data from the National Park Service API:\n\nGet a free API key from: https://www.nps.gov/subjects/developer/get-started.htm\nCreate a .env file:\nNPS_API_KEY=your_key_here\nRun:\nfrom national_parks import get_parks_data\ndf = get_parks_data() print(df.head())\n\n\n\n\n\nThis tutorial demonstrates:\n\nInstalling a Python package from PyPI\nImporting and using functions\nWorking with a real dataset\nExploring relationships between park features\n\n\n\n\n\n\nSee Documentation for full function details\nView the Technical Report for insights and analysis\nExplore the Streamlit App for interactive visualization"
+    "text": "This tutorial walks through how to install and use the national_parks package."
   },
   {
     "objectID": "tutorial.html#step-1-install-the-package",
     "href": "tutorial.html#step-1-install-the-package",
-    "title": "Tutorial",
-    "section": "",
-    "text": "Install directly from PyPI:\npip install national-parks-agglomerate"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "Step 1: Install the Package",
+    "text": "Step 1: Install the Package\nInstall directly from PyPI:\npip install national-parks-agglomerate"
   },
   {
     "objectID": "tutorial.html#step-2-import-the-package",
     "href": "tutorial.html#step-2-import-the-package",
-    "title": "Tutorial",
-    "section": "",
-    "text": "Open Python and import the functions:\nfrom national_parks import summarize_parks\nimport pandas as pd"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "Step 2: Import the Package",
+    "text": "Step 2: Import the Package\nOpen Python and import the functions:\nfrom national_parks import summarize_parks\nimport pandas as pd"
   },
   {
     "objectID": "tutorial.html#step-3-load-the-dataset",
     "href": "tutorial.html#step-3-load-the-dataset",
-    "title": "Tutorial",
-    "section": "",
-    "text": "Use the included processed dataset:\ndf = pd.read_csv(\"data/processed/parks_final.csv\")"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "Step 3: Load the Dataset",
+    "text": "Step 3: Load the Dataset\nUse the included processed dataset:\ndf = pd.read_csv(\"data/processed/parks_final.csv\")"
   },
   {
     "objectID": "tutorial.html#step-4-generate-summary-statistics",
     "href": "tutorial.html#step-4-generate-summary-statistics",
-    "title": "Tutorial",
-    "section": "",
-    "text": "summary = summarize_parks(df)\nprint(summary)"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "Step 4: Generate Summary Statistics",
+    "text": "Step 4: Generate Summary Statistics\nsummary = summarize_parks(df)\nprint(summary)"
   },
   {
     "objectID": "tutorial.html#step-5-explore-top-parks",
     "href": "tutorial.html#step-5-explore-top-parks",
-    "title": "Tutorial",
-    "section": "",
-    "text": "from national_parks import top_parks_by_alerts\n\ntop_parks = top_parks_by_alerts(df)\nprint(top_parks)"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "Step 5: Explore Top Parks",
+    "text": "Step 5: Explore Top Parks\nfrom national_parks import top_parks_by_alerts\n\ntop_parks = top_parks_by_alerts(df)\nprint(top_parks)"
   },
   {
     "objectID": "tutorial.html#optional-rebuild-the-dataset-from-api",
     "href": "tutorial.html#optional-rebuild-the-dataset-from-api",
-    "title": "Tutorial",
-    "section": "",
-    "text": "If you want to collect fresh data from the National Park Service API:\n\nGet a free API key from: https://www.nps.gov/subjects/developer/get-started.htm\nCreate a .env file:\nNPS_API_KEY=your_key_here\nRun:\nfrom national_parks import get_parks_data\ndf = get_parks_data() print(df.head())"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "Optional: Rebuild the Dataset from API",
+    "text": "Optional: Rebuild the Dataset from API\nIf you want to collect fresh data from the National Park Service API:\n\nGet a free API key from: https://www.nps.gov/subjects/developer/get-started.htm\nCreate a .env file:\nNPS_API_KEY=your_key_here\nRun:\nfrom national_parks import get_parks_data\ndf = get_parks_data() print(df.head())"
   },
   {
     "objectID": "tutorial.html#what-this-shows",
     "href": "tutorial.html#what-this-shows",
-    "title": "Tutorial",
-    "section": "",
-    "text": "This tutorial demonstrates:\n\nInstalling a Python package from PyPI\nImporting and using functions\nWorking with a real dataset\nExploring relationships between park features"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "What This Shows",
+    "text": "What This Shows\nThis tutorial demonstrates:\n\nInstalling a Python package from PyPI\nImporting and using functions\nWorking with a real dataset\nExploring relationships between park features"
   },
   {
     "objectID": "tutorial.html#next-steps",
     "href": "tutorial.html#next-steps",
-    "title": "Tutorial",
-    "section": "",
-    "text": "See Documentation for full function details\nView the Technical Report for insights and analysis\nExplore the Streamlit App for interactive visualization"
+    "title": "Tutorial: Using the National Parks Package",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nSee Documentation for full function details\nView the Technical Report for insights and analysis\nExplore the Streamlit App for interactive visualization"
   }
 ]

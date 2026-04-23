@@ -1,8 +1,6 @@
 ---
-title: "Tutorial"
+title: "Tutorial: Using the National Parks Package"
 ---
-
-# Tutorial: Using the National Parks Package
 
 This tutorial walks through how to install and use the `national_parks` package.
 

@@ -135,17 +135,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#technical-report" id="toc-technical-report" class="nav-link active" data-scroll-target="#technical-report">Technical Report</a>
-  <ul class="collapse">
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
   <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
   <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
-  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition">Data Acquisition</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link" data-scroll-target="#feature-engineering">Feature Engineering</a></li>
+  </ul></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -171,12 +174,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="technical-report" class="level1">
-<h1>Technical Report</h1>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>This project builds a custom dataset using the National Park Service (NPS) API by combining parks, alerts, and campground data into a unified dataset. The goal is to explore how park amenities relate to operational complexity across National Park Service sites.</p>
+<p>The final dataset contains 474 park units and includes engineered features such as number of activities, alerts, and campgrounds. Analysis suggests a weak positive relationship between amenities and operational complexity.</p>
+<hr>
+</section>
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>The goal of this project is to better understand how different National Park Service sites compare in terms of amenities and operational complexity.</p>
-<p>Rather than relying on an existing dataset, this project builds a custom dataset using the National Park Service API. This allows for greater control over the features included and ensures the dataset reflects the specific questions being explored.</p>
+<p>The National Park Service manages a wide range of park units that vary significantly in size, infrastructure, and usage. Understanding how park features relate to operational demands can provide insight into how resources are distributed and managed.</p>
+<p>Rather than using a pre-existing dataset, this project builds a dataset from scratch to allow full control over feature selection and data structure.</p>
 <hr>
 </section>
 <section id="data-collection" class="level2">
@@ -187,45 +194,55 @@ ul.task-list li input[type="checkbox"] {
 <li>Alerts</li>
 <li>Campgrounds</li>
 </ul>
-<p>Each endpoint provides different information about park units. These datasets were pulled using Python and stored as raw CSV files.</p>
+<p>Each endpoint provides different information about park units. Data was retrieved using Python and stored as raw CSV files.</p>
 <hr>
 </section>
-<section id="data-processing" class="level2">
-<h2 class="anchored" data-anchor-id="data-processing">Data Processing</h2>
-<p>The raw datasets were cleaned and transformed to create a single, unified dataset.</p>
-<p>Key steps included:</p>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<section id="data-acquisition" class="level3">
+<h3 class="anchored" data-anchor-id="data-acquisition">Data Acquisition</h3>
+<p>API requests were made using the <code>requests</code> library. Each endpoint returned JSON data, which was converted into pandas DataFrames.</p>
+<p>The parks dataset served as the base dataset, while alerts and campgrounds were merged using park codes.</p>
+</section>
+<section id="data-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
+<p>Key cleaning steps included:</p>
 <ul>
+<li>Removing missing values</li>
+<li>Standardizing column names</li>
+<li>Converting data types</li>
 <li>Selecting relevant variables</li>
-<li>Handling missing values</li>
-<li>Merging datasets using park codes</li>
-<li>Creating new features:
-<ul>
-<li><code>description_length</code></li>
-<li><code>num_activities</code></li>
-<li><code>num_alerts</code></li>
-<li><code>num_campgrounds</code></li>
-</ul></li>
 </ul>
-<p>The final dataset contains 474 park units and 9 variables.</p>
+</section>
+<section id="feature-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h3>
+<p>New variables were created to support analysis:</p>
+<ul>
+<li><code>description_length</code>: length of park description</li>
+<li><code>num_activities</code>: number of listed activities</li>
+<li><code>num_alerts</code>: number of alerts per park</li>
+<li><code>num_campgrounds</code>: number of campgrounds per park</li>
+</ul>
 <hr>
+</section>
 </section>
 <section id="analysis" class="level2">
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>The main focus of the analysis is the relationship between:</p>
+<p>The primary question explored is the relationship between:</p>
 <ul>
 <li>Amenities (activities and campgrounds)</li>
 <li>Operational complexity (alerts)</li>
 </ul>
-<p>A scatterplot of activities versus alerts shows that most parks have relatively few alerts regardless of activity level. However, parks with more activities tend to have slightly higher alert counts.</p>
-<p>This suggests a weak positive relationship between amenities and operational complexity.</p>
+<p>A scatterplot of activities versus alerts shows that most parks have low alert counts regardless of activity level. However, parks with more activities tend to have slightly higher alert counts.</p>
+<p>A simple linear trend line suggests a weak positive relationship.</p>
 <hr>
 </section>
 <section id="key-findings" class="level2">
 <h2 class="anchored" data-anchor-id="key-findings">Key Findings</h2>
 <ul>
-<li>Most parks have low alert counts</li>
-<li>There is only a weak relationship between activities and alerts</li>
-<li>Larger or more complex parks tend to have more alerts</li>
+<li>Most parks have low numbers of alerts</li>
+<li>There is only a weak relationship between amenities and alerts</li>
+<li>Parks with more infrastructure tend to show slightly higher operational complexity</li>
 </ul>
 <hr>
 </section>
@@ -234,13 +251,13 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>The dataset is a snapshot in time and does not update automatically</li>
 <li>Alerts and campgrounds were limited to 500 records</li>
-<li>Park types vary widely, which may affect comparisons</li>
+<li>Park units vary widely in type and scale, which affects comparisons</li>
 </ul>
 <hr>
 </section>
 <section id="reproducibility" class="level2">
 <h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
-<p>The full workflow can be reproduced using the scripts in the <code>src/</code> directory:</p>
+<p>The full workflow can be reproduced using scripts in the <code>src/</code> directory:</p>
 <ul>
 <li><code>get_parks.py</code></li>
 <li><code>get_alerts.py</code></li>
@@ -255,10 +272,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>This project demonstrates a complete data science workflow, from data collection to analysis and deployment. It highlights how public APIs can be used to build meaningful datasets and extract insights from real-world data.</p>
+<p>This project demonstrates a full data science workflow, from data collection to deployment. It highlights how API data can be transformed into a structured dataset and used to explore meaningful relationships between real-world variables.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
