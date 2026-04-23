@@ -1,0 +1,94 @@
+---
+title: "Technical Report"
+---
+
+# Technical Report
+
+## Motivation
+
+The goal of this project is to better understand how different National Park Service sites compare in terms of amenities and operational complexity.
+
+Rather than relying on an existing dataset, this project builds a custom dataset using the National Park Service API. This allows for greater control over the features included and ensures the dataset reflects the specific questions being explored.
+
+---
+
+## Data Collection
+
+Data was collected from the National Park Service API using three endpoints:
+
+- Parks
+- Alerts
+- Campgrounds
+
+Each endpoint provides different information about park units. These datasets were pulled using Python and stored as raw CSV files.
+
+---
+
+## Data Processing
+
+The raw datasets were cleaned and transformed to create a single, unified dataset.
+
+Key steps included:
+
+- Selecting relevant variables
+- Handling missing values
+- Merging datasets using park codes
+- Creating new features:
+  - `description_length`
+  - `num_activities`
+  - `num_alerts`
+  - `num_campgrounds`
+
+The final dataset contains 474 park units and 9 variables.
+
+---
+
+## Analysis
+
+The main focus of the analysis is the relationship between:
+
+- Amenities (activities and campgrounds)
+- Operational complexity (alerts)
+
+A scatterplot of activities versus alerts shows that most parks have relatively few alerts regardless of activity level. However, parks with more activities tend to have slightly higher alert counts.
+
+This suggests a weak positive relationship between amenities and operational complexity.
+
+---
+
+## Key Findings
+
+- Most parks have low alert counts
+- There is only a weak relationship between activities and alerts
+- Larger or more complex parks tend to have more alerts
+
+---
+
+## Limitations
+
+- The dataset is a snapshot in time and does not update automatically
+- Alerts and campgrounds were limited to 500 records
+- Park types vary widely, which may affect comparisons
+
+---
+
+## Reproducibility
+
+The full workflow can be reproduced using the scripts in the `src/` directory:
+
+- `get_parks.py`
+- `get_alerts.py`
+- `get_campgrounds.py`
+- `clean_parks.py`
+- `merge_alerts.py`
+- `merge_campgrounds.py`
+
+The final dataset is stored at:
+
+    data/processed/parks_final.csv
+
+---
+
+## Conclusion
+
+This project demonstrates a complete data science workflow, from data collection to analysis and deployment. It highlights how public APIs can be used to build meaningful datasets and extract insights from real-world data.

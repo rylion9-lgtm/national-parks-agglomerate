@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - documentation.qmd
+    - tutorial.qmd
+    - technical-report.qmd
+
+website:
+  title: "National Parks: An Agglomerate"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: documentation.qmd
+        text: Documentation
+      - href: tutorial.qmd
+        text: Tutorial
+      - href: technical-report.qmd
+        text: Technical Report
+    right:
+      - href: https://pypi.org/project/national-parks-agglomerate/
+        text: PyPI
+      - href: https://github.com/rylion9-lgtm/national-parks-agglomerate
+        text: GitHub
+      - href: https://national-parks-agglomerategit-fx4mzpepe8eaqgridzjnzr.streamlit.app/
+        text: Streamlit App
+
+format:
+  html:
+    theme: cosmo
+    toc: true

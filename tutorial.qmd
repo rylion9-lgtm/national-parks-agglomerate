@@ -1,0 +1,87 @@
+---
+title: "Tutorial"
+---
+
+# Tutorial: Using the National Parks Package
+
+This tutorial walks through how to install and use the `national_parks` package.
+
+---
+
+## Step 1: Install the Package
+
+Install directly from PyPI:
+
+    pip install national-parks-agglomerate
+
+---
+
+## Step 2: Import the Package
+
+Open Python and import the functions:
+
+    from national_parks import summarize_parks
+    import pandas as pd
+
+---
+
+## Step 3: Load the Dataset
+
+Use the included processed dataset:
+
+    df = pd.read_csv("data/processed/parks_final.csv")
+
+---
+
+## Step 4: Generate Summary Statistics
+
+    summary = summarize_parks(df)
+    print(summary)
+
+---
+
+## Step 5: Explore Top Parks
+
+    from national_parks import top_parks_by_alerts
+
+    top_parks = top_parks_by_alerts(df)
+    print(top_parks)
+
+---
+
+## Optional: Rebuild the Dataset from API
+
+If you want to collect fresh data from the National Park Service API:
+
+1. Get a free API key from:
+   https://www.nps.gov/subjects/developer/get-started.htm
+
+2. Create a `.env` file:
+
+    NPS_API_KEY=your_key_here
+
+3. Run:
+
+    from national_parks import get_parks_data
+
+    df = get_parks_data()
+    print(df.head())
+
+---
+
+## What This Shows
+
+This tutorial demonstrates:
+
+- Installing a Python package from PyPI
+- Importing and using functions
+- Working with a real dataset
+- Exploring relationships between park features
+
+---
+
+## Next Steps
+
+- See **Documentation** for full function details
+- View the **Technical Report** for insights and analysis
+- Explore the **Streamlit App** for interactive visualization

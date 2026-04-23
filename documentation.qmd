@@ -1,0 +1,100 @@
+---
+title: "Documentation"
+---
+
+# Package Documentation
+
+This page describes the main functions available in the `national_parks` package.
+
+---
+
+## get_parks_data()
+
+### Description
+Fetches park data from the National Park Service API and returns it as a pandas DataFrame.
+
+### Arguments
+- None
+
+### Returns
+- pandas.DataFrame: Raw parks data from the API
+
+### Example
+
+    from national_parks import get_parks_data
+
+    df = get_parks_data()
+    print(df.head())
+
+---
+
+## clean_parks(df)
+
+### Description
+Cleans the raw parks dataset and creates new features such as description length and number of activities.
+
+### Arguments
+- df (pandas.DataFrame): Raw parks data
+
+### Returns
+- pandas.DataFrame: Cleaned parks dataset
+
+### Example
+
+    from national_parks import get_parks_data, clean_parks
+
+    df = get_parks_data()
+    clean_df = clean_parks(df)
+
+---
+
+## summarize_parks(df)
+
+### Description
+Generates summary statistics for a parks dataset.
+
+### Arguments
+- df (pandas.DataFrame): Processed parks dataset
+
+### Returns
+- Summary output (DataFrame or dictionary depending on implementation)
+
+### Example
+
+    from national_parks import summarize_parks
+    import pandas as pd
+
+    df = pd.read_csv("data/processed/parks_final.csv")
+    summary = summarize_parks(df)
+
+    print(summary)
+
+---
+
+## top_parks_by_alerts(df)
+
+### Description
+Returns the parks with the highest number of alerts.
+
+### Arguments
+- df (pandas.DataFrame): Processed parks dataset
+
+### Returns
+- pandas.DataFrame: Top parks sorted by alert count
+
+### Example
+
+    from national_parks import top_parks_by_alerts
+    import pandas as pd
+
+    df = pd.read_csv("data/processed/parks_final.csv")
+    top_parks = top_parks_by_alerts(df)
+
+    print(top_parks)
+
+---
+
+## Notes
+
+- Data collection functions require an NPS API key stored in a `.env` file.
+- The dataset used in examples is located in `data/processed/parks_final.csv`.
