@@ -109,35 +109,35 @@
     "href": "index.html",
     "title": "National Parks: An Agglomerate",
     "section": "",
-    "text": "This project builds a custom dataset using the National Park Service (NPS) API by combining parks, alerts, and campground data into a single dataset for analysis.\n\n\nThe goal of this project is to explore how:\n\nAmenities (activities and campgrounds)\nrelate to\nOperational complexity (alerts)\n\nRather than using a pre-existing dataset, this project collects and processes raw API data into a structured format.\n\n\n\n\n📦 Install the package from PyPI:\nhttps://pypi.org/project/national-parks-agglomerate/\n💻 View the source code on GitHub:\nhttps://github.com/rylion9-lgtm/national-parks-agglomerate\n📊 Try the interactive Streamlit app:\nhttps://national-parks-agglomerategit-fx4mzpepe8eaqgridzjnzr.streamlit.app/\n\n\n\n\n\nDocumentation → Details on package functions\nTutorial → Step-by-step guide to install and use the package\nTechnical Report → Project motivation, methods, and findings\n\n\n\n\nThis project demonstrates a full data science workflow:\n\nAPI data collection\nData cleaning and transformation\nFeature engineering\nBuilding a Python package\nDeploying an interactive app\n\nIt reflects how real-world data projects are built from raw data to final product."
+    "text": "This project builds a custom dataset using the National Park Service (NPS) API by combining parks, alerts, and campground data into a single dataset for analysis."
   },
   {
     "objectID": "index.html#project-overview",
     "href": "index.html#project-overview",
     "title": "National Parks: An Agglomerate",
-    "section": "",
-    "text": "The goal of this project is to explore how:\n\nAmenities (activities and campgrounds)\nrelate to\nOperational complexity (alerts)\n\nRather than using a pre-existing dataset, this project collects and processes raw API data into a structured format."
+    "section": "Project Overview",
+    "text": "Project Overview\nThe goal of this project is to explore how:\n\nAmenities (activities and campgrounds)\nrelate to\nOperational complexity (alerts)\n\nRather than using a pre-existing dataset, this project collects and processes raw API data into a structured format."
   },
   {
     "objectID": "index.html#explore-the-project",
     "href": "index.html#explore-the-project",
     "title": "National Parks: An Agglomerate",
-    "section": "",
-    "text": "📦 Install the package from PyPI:\nhttps://pypi.org/project/national-parks-agglomerate/\n💻 View the source code on GitHub:\nhttps://github.com/rylion9-lgtm/national-parks-agglomerate\n📊 Try the interactive Streamlit app:\nhttps://national-parks-agglomerategit-fx4mzpepe8eaqgridzjnzr.streamlit.app/"
+    "section": "Explore the Project",
+    "text": "Explore the Project\n\n📦 Install the package from PyPI:\nnational-parks-agglomerate\n💻 View the source code on GitHub:\nGitHub Repository\n📊 Try the interactive Streamlit app:\nLaunch App"
   },
   {
     "objectID": "index.html#site-navigation",
     "href": "index.html#site-navigation",
     "title": "National Parks: An Agglomerate",
-    "section": "",
-    "text": "Documentation → Details on package functions\nTutorial → Step-by-step guide to install and use the package\nTechnical Report → Project motivation, methods, and findings"
+    "section": "Site Navigation",
+    "text": "Site Navigation\n\nDocumentation → Details on package functions\nTutorial → Step-by-step guide to install and use the package\nTechnical Report → Project motivation, methods, and findings"
   },
   {
     "objectID": "index.html#why-this-matters",
     "href": "index.html#why-this-matters",
     "title": "National Parks: An Agglomerate",
-    "section": "",
-    "text": "This project demonstrates a full data science workflow:\n\nAPI data collection\nData cleaning and transformation\nFeature engineering\nBuilding a Python package\nDeploying an interactive app\n\nIt reflects how real-world data projects are built from raw data to final product."
+    "section": "Why This Matters",
+    "text": "Why This Matters\nThis project demonstrates a full data science workflow:\n\nAPI data collection\nData cleaning and transformation\nFeature engineering\nBuilding a Python package\nDeploying an interactive app\n\nIt reflects how real-world data projects are built from raw data to final product."
   },
   {
     "objectID": "tutorial.html",
