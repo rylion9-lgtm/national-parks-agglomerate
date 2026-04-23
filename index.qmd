@@ -2,8 +2,6 @@
 title: "National Parks: An Agglomerate"
 ---
 
-# National Parks: An Agglomerate
-
 This project builds a custom dataset using the National Park Service (NPS) API by combining parks, alerts, and campground data into a single dataset for analysis.
 
 ## Project Overview
@@ -19,13 +17,13 @@ Rather than using a pre-existing dataset, this project collects and processes ra
 ## Explore the Project
 
 - 📦 Install the package from PyPI:  
-  https://pypi.org/project/national-parks-agglomerate/
+  [national-parks-agglomerate](https://pypi.org/project/national-parks-agglomerate/)
 
 - 💻 View the source code on GitHub:  
-  https://github.com/rylion9-lgtm/national-parks-agglomerate
+  [GitHub Repository](https://github.com/rylion9-lgtm/national-parks-agglomerate)
 
 - 📊 Try the interactive Streamlit app:  
-  https://national-parks-agglomerategit-fx4mzpepe8eaqgridzjnzr.streamlit.app/
+  [Launch App](https://national-parks-agglomerategit-fx4mzpepe8eaqgridzjnzr.streamlit.app/)
 
 ## Site Navigation
 

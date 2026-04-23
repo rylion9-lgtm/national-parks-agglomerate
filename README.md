@@ -4,6 +4,13 @@ This project uses the National Park Service (NPS) API to build a curated dataset
 
 ---
 
+## Project Website
+
+View the full project site (documentation, tutorial, and report):  
+https://rylion9-lgtm.github.io/national-parks-agglomerate/
+
+---
+
 ## Live App
 
 Explore the interactive Streamlit app here:  
